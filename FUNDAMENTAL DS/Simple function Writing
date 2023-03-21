@@ -1,0 +1,88 @@
+'''Write a python program to store marks scored in subject "Fundamental of data structure " by N students in the class . Write function to compute following :
+    a) The average score of the class
+    b) Highest score and lowest score of the class
+    c) Count of the student who were absent for the test
+    d) Display mark with highest frequency'''
+
+total=int(input("Enter total no of the students : "))
+present=int(input("enter no.of students present for the test : "))
+
+def absent(FDSmarks):
+    print("\nc) Count of the student who were absent for the test : ",total-present,"\n")
+
+FDSmarks=[]
+print("Enter marks of the ",present," students in the FDS : \n")
+for i in range (present):
+    FDSmarks.append(int(input()))
+
+print("\nFDS marks of all the sudents are : \n",FDSmarks)
+
+
+def average(FDSmarks):
+    sum=0
+    for marks in FDSmarks:
+        sum=sum+marks
+    avg=sum/total
+    print("\na) The average score of the class : ",avg )
+
+
+def maximum(FDSmarks):
+    max = FDSmarks[0]
+    for i in FDSmarks:
+        if i>max:
+            max=i
+    print("\nb) Highest score of the class : ",max)
+
+def minimum(FDSmarks):
+    min = FDSmarks[0]
+    for i in FDSmarks:
+        if i<min:
+            min=i
+    print("   lowest score of the class : ",min)
+
+def maxfre(FDSmarks):
+    maxcount = 0
+    max = 0
+
+    for element in FDSmarks:
+        if FDSmarks.index(element) ==maxcount:
+            if FDSmarks.count(element) > max:
+                max = FDSmarks.count(element)
+        maxcount = maxcount+1
+
+    for ele in FDSmarks:
+        if FDSmarks.count(ele)==max:
+            flag = ele
+    print("d) Display mark with highest frequency : ",flag)        
+
+average(FDSmarks)
+maximum(FDSmarks)
+minimum(FDSmarks)
+absent(FDSmarks)
+maxfre(FDSmarks)
+
+
+
+
+
+Output : 
+
+Enter total no of the students : 4
+enter no.of students present for the test : 3
+Enter marks of the  3  students in the FDS : 
+
+45
+67
+89
+
+FDS marks of all the sudents are :
+ [45, 67, 89]
+
+a) The average score of the class :  50.25
+
+b) Highest score of the class :  89
+   lowest score of the class :  45
+
+c) Count of the student who were absent for the test :  1
+
+d) Display mark with highest frequency :  89
