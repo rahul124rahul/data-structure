@@ -1,0 +1,179 @@
+'''         In a second year computer engineering class, group A students play cricket, group B students play badminton and group C students play football.
+    Write a python program using functions to compute following:
+    a) List of students who play both cricket and badminton.
+    b) List of students who play either cricket or badminton but not both.
+    c) Number of students who play neither cricket nor badminton.
+    d) Number of students who play cricket and football but not badminton.        '''
+
+def union(lst1,lst2):
+    lst3=lst1.copy()
+    for val in lst2:
+        if val not in lst3:
+            lst3.append(val)
+    return lst3
+
+
+def intersection(lst1,lst2):
+    lst3=[]
+    for val in lst1:
+        if val in lst2:
+            lst3.append(val)
+    return lst3
+
+
+def removeDuplicate(d):
+    lst=[]
+    for i in d:
+        if i not in lst:
+            lst.append(i)
+    return lst
+
+
+def diff(lst1,lst2):
+    lst3=[]
+    for val in lst1:
+        if val not in lst2:
+            lst3.append(val)
+    return lst3
+
+
+def sym_diff(lst1,lst2):
+    lst3=[]
+    D1=diff(lst1,lst2)
+    D2=diff(lst2,lst1)
+    lst3=union(D1,D2)
+    return lst3
+
+
+# a)
+
+def a(lst1,lst2):
+    lst3=intersection(lst1,lst2)
+    print("\n\na) List of students who play both cricket and badminton is : ", lst3)
+
+
+# b)
+
+def b(lst1,lst2):
+    lst3=sym_diff(lst1,lst2)
+    print("\nb) List of students who play either cricket or badminton but not both: ",lst3)
+
+
+# c)
+
+def c(lst1,lst2,lst3):
+    lst4=diff(lst1,union(lst2,lst3))
+    print("\nc) Number of students who play neither cricket nor badminton : ",lst4)
+
+
+# d)
+
+def d(lst1,lst2,lst3):
+    lst4=diff(intersection(lst1,lst2),lst3)
+    print("\nd) Number of students who play cricket and football but not badminton are  : ",lst4,"\n\n")
+
+
+
+# input taking
+
+SECompstudent = []
+n = int(input("\nEnter number of students in SE computer engimnneering: "))
+print("\nEnter the first names of",n,"students : ")
+for i in range(0, n):
+    ele = input()
+    SECompstudent.append(ele)  # adding the element in the list 
+    
+print("\nTotal list of students in SEComp : " , SECompstudent)
+
+
+
+# list for Cricket
+Cricket = []
+n = int(input("\n\nEnter no. of students who play cricket : "))
+print("Enter the names of",n,"students who play cricket : ")
+for i in range(0, n):
+    ele = input()
+    Cricket.append(ele)  # adding the element
+
+Cricket=removeDuplicate(Cricket)
+
+
+# list for Football
+Football = []
+n = int(input("\n\nEnter number of students who play football : "))
+print("Enter the name of",n,"students who play football :")
+for i in range(0, n):
+    ele = input()
+    Football.append(ele)  # adding the element
+Football=removeDuplicate(Football)
+
+
+# list for Badminton
+Badminton = []
+n = int(input("\n\nEnter number of students who play badminton : "))
+print("Enter the name of",n,"students who play badminton :")
+for i in range(0, n):
+    ele = input()
+    Badminton.append(ele)  # adding the element
+Badminton=removeDuplicate(Badminton)
+
+
+a(Cricket,Badminton)
+b(Cricket, Badminton)
+c(SECompstudent,Cricket,Badminton)
+d(Cricket,Football,Badminton)
+
+
+
+
+
+Output  :
+
+
+Enter number of students in SE computer engimnneering: 7
+
+Enter the first names of 7 students : 
+A
+S 
+D
+F
+G
+H
+J
+
+Total list of students in SEComp :  ['A', 'S', 'D', 'F', 'G', 'H', 'J']
+
+
+Enter no. of students who play cricket : 5
+Enter the names of 5 students who play cricket :
+A
+S
+D
+F
+G
+
+
+Enter number of students who play football : 4
+Enter the name of 4 students who play football :
+J
+H
+G
+F
+
+
+Enter number of students who play badminton : 5
+Enter the name of 5 students who play badminton :
+H
+G
+D
+S
+A
+
+
+a) List of students who play both cricket and badminton is :  ['A', 'S', 'D', 'G']
+
+b) List of students who play either cricket or badminton but not both:  ['F', 'H']
+
+c) Number of students who play neither cricket nor badminton :  ['J']
+
+d) Number of students who play cricket and football but not badminton are  :  ['F']
