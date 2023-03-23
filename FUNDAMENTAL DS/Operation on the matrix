@@ -1,0 +1,60 @@
+'''Write a Python Program to compute following computation on matrix :
+    a)Addition of two matrices
+    b)Subtraction of two matrices
+    c)Multiplication of two matrices
+    d)Transpose of a matix '''
+
+import numpy
+
+# initialise a matrix
+p = numpy.array([[23,34],[12,7]])
+q = numpy.array([[65,9],[33,21]])
+
+print("\nOur matrices are : ")
+print("First Matrix :\n",p)
+print("Second Matrix :\n",q)
+
+# Addition
+print("\na)Addition of two matrices : ")
+print(numpy.add(p,q))
+
+# Subtraction 
+print("\nb)Subtraction of two matrices : ")
+print(numpy.subtract(p,q))
+
+# Multiplication 
+print("\nc)Multiplication of two matrices : ")
+print(numpy.dot(p,q))
+
+# Transpose
+print("\nd)Transpose of a matix : ")
+print(p.T)
+
+
+
+
+Output :
+
+Our matrices are : 
+First Matrix :
+ [[23 34]
+ [12  7]]
+Second Matrix :
+ [[65  9]
+ [33 21]]
+
+a)Addition of two matrices :
+[[88 43]
+ [45 28]]
+
+b)Subtraction of two matrices :
+[[-42  25]
+ [-21 -14]]
+
+c)Multiplication of two matrices :
+[[2617  921]
+ [1011  255]]
+
+d)Transpose of a matix :
+[[23 12]
+ [34  7]]
