@@ -1,0 +1,182 @@
+'''  Write a python program to maintain club members, sort on roll numbers in ascending order. Write function "Ternary search" to search whether particular
+student is member of club or not.Ternary search is modified binary search that divides array into 3 halves instead of two.    '''
+
+
+def takeroll():         # Here we are taking the roll no of the students as input
+    rollno = []
+    n = int(input("Enter the number of students  : "))
+    print("Enter roll numbers of the",n,"Students : \n")
+
+    for i in range(n):
+        rollno.append(int(input()))
+    return rollno
+
+
+def printroll(rollno):              # Printing the roll numbers of the students
+    for i in range(len(rollno)):
+        print(rollno[i])
+
+
+# Sorting the list by the selection sort
+
+def selectionsort(rollno):
+    for i in range(0,len(rollno)-1):
+        minterm = i
+        for j in range(i+1,len(rollno)):
+            if rollno[j]<rollno[minterm]:
+                minterm=j
+        rollno[minterm],rollno[i]=rollno[i],rollno[minterm]         # imp step of swaapping no.
+    return rollno
+
+
+# Defination of the Ternary Search function
+
+def Ternary_Search(roll, left, right, roll_find):
+    if (right >= left):
+        mid1 = left + (right - left) // 3           # // will return the quotient in index form
+        mid2 = right - (right - left) // 3
+        if (roll[mid1] == roll_find):
+            return mid1
+        if (roll[mid2] == roll_find):
+            return mid2
+
+        if (roll_find < roll[mid1]):
+            return Ternary_Search(roll, left, mid1 - 1, roll_find)
+        elif (roll_find > roll[mid2]):
+            return Ternary_Search(roll, mid2 + 1, right, roll_find)
+        else:
+            return Ternary_Search(roll, mid1 + 1, mid2 - 1, roll_find)
+    return -1
+
+
+# Main
+unsort_Roll = []
+sort_Roll = []
+flag = 1
+
+while flag == 1:
+        print("\n***************** MENU ******************")
+        print("1. Accept Student Roll Numbers")
+        print("2. Display the Roll Numbers of Student")
+        print("3. Sort Roll Numbers from the list")
+        print("4. Perform Ternary Search")
+        print("5. Exit\n")
+
+        ch = int(input("Enter your choice (from 1 to 5) : "))
+
+        if ch == 1:
+             unsort_Roll = takeroll()
+
+        elif ch == 2:
+            printroll(unsort_Roll)
+
+        elif ch == 3:
+            print("Elements after performing Selection Sort : \n")
+            sort_Roll = selectionsort(unsort_Roll)
+            printroll(sort_Roll)
+
+        elif ch == 4:
+            find_roll = int(input("Enter the Roll Number to search : "))
+            left = 0
+            right = len(sort_Roll) - 1
+            index = Ternary_Search(sort_Roll,left,right,find_roll)
+            if index != -1:
+                print("The Roll Number",find_roll,"is found at position",index+1)
+            else:
+                print("Roll Number",find_roll,"not found!!")
+
+        elif ch == 5:
+            print(" Stopped the program ")
+            flag=0
+
+        else:
+            print("Wrong choice!!")
+            flag = 0
+            
+            
+            
+            
+         
+  
+  Output :
+  
+  
+  
+***************** MENU ******************
+1. Accept Student Roll Numbers
+2. Display the Roll Numbers of Student
+3. Sort Roll Numbers from the list
+4. Perform Ternary Search
+5. Exit
+
+Enter your choice (from 1 to 5) : 1
+Enter the number of students  : 5
+Enter roll numbers of the 5 Students :
+
+62
+34
+67
+12
+35
+
+***************** MENU ******************
+1. Accept Student Roll Numbers
+2. Display the Roll Numbers of Student
+3. Sort Roll Numbers from the list
+4. Perform Ternary Search
+5. Exit
+
+Enter your choice (from 1 to 5) : 2
+62
+34
+67
+12
+35
+
+***************** MENU ******************
+1. Accept Student Roll Numbers
+2. Display the Roll Numbers of Student
+3. Sort Roll Numbers from the list
+4. Perform Ternary Search
+5. Exit
+
+Enter your choice (from 1 to 5) : 3
+Elements after performing Selection Sort :
+
+12
+34
+35
+62
+67
+
+***************** MENU ******************
+1. Accept Student Roll Numbers
+2. Display the Roll Numbers of Student
+3. Sort Roll Numbers from the list
+4. Perform Ternary Search
+5. Exit
+
+Enter your choice (from 1 to 5) : 4
+Enter the Roll Number to search : 12
+The Roll Number 12 is found at position 1
+
+***************** MENU ******************
+1. Accept Student Roll Numbers
+2. Display the Roll Numbers of Student
+3. Sort Roll Numbers from the list
+4. Perform Ternary Search
+5. Exit
+
+Enter your choice (from 1 to 5) : 4
+Enter the Roll Number to search : 23
+Roll Number 23 not found!!
+
+***************** MENU ******************
+1. Accept Student Roll Numbers
+2. Display the Roll Numbers of Student
+3. Sort Roll Numbers from the list
+4. Perform Ternary Search
+5. Exit
+
+Enter your choice (from 1 to 5) : 5
+ Stopped the program
