@@ -1,0 +1,153 @@
+''' Write a python program to store first year percentage of students in an array.Write function for sorting array of floating point numbers in ascending order 
+using:
+    a) Selection Sort
+    b) Bubble Sort and display top five scores   '''
+
+
+# Selection Sort  
+# Here we select minimum element from array and swap 
+
+def SelectionSort(marks):
+    for i in range(len(marks)-1):
+
+        # Here we find minimum element's index
+        minidx = i
+        for j in range(i + 1, len(marks)):
+            if marks[minidx] > marks[j]:
+                minidx = j
+
+        # Here we swap the minimum element with the first element
+        marks[i], marks[minidx] = marks[minidx], marks[i]
+
+    print("\nMarks of students in ascending order by Selection Sort : ")
+    for i in range(len(marks)):
+        print(marks[i])
+
+
+# Bubble Sort 
+# Here we bring the largest element in the end of the array by comparing and swapping
+
+def BubbleSort(marks):
+    n = len(marks)
+
+    for i in range(n - 1):              # Loop will execute n-1 times to fix n-1 elements ( last element is automatically fixed )
+        for j in range(0, n - i - 1):       # It reduces because one by one elements are placed on it's proper place
+            # Swap the element if found element is greater than it's next element
+            if marks[j] > marks[j + 1]:
+                marks[j], marks[j + 1] = marks[j + 1], marks[j]
+
+    print("\nMarks of student by applying Bubble Sort  :")
+    for i in range(len(marks)):
+        print(marks[i])
+
+
+# Function for displaying top five marks
+
+def TopFiveMarks(marks):
+    print("\nThe top 5 marks are : ")
+    for i in range(1,6):
+        print(marks[-i])
+
+# Main
+
+marks=[]
+n = int(input("Enter number of students : "))
+print("Enter marks of ",n,"students : ")
+for i in range(0, n):
+    ele = int(input())
+    marks.append(ele) 
+
+print("\nMarks of",n,"students are : ")
+print(marks)
+
+flag=1
+while flag==1:
+    print("\n***************MENU*****************")
+    print("1. Selection Sort of the percentage ")
+    print("2. Bubble Sort of the percentage \n3. End the program")
+    ch=int(input("\n\nEnter your choice (from 1,2 or 3) : "))
+
+    if ch==1:
+        SelectionSort(marks)
+        TopFiveMarks(marks)
+    elif ch==2:
+        BubbleSort(marks)
+        TopFiveMarks(marks)
+    elif ch==3:
+        print("Ended the program.")
+        flag=0
+    else:
+        print("Wrong choice!!!")
+        flag=0
+        
+        
+        
+ 
+ 
+ Output : 
+ 
+ 
+ 
+ Enter number of students : 5
+Enter marks of  5 students : 
+67
+34
+97
+78
+23
+
+Marks of 5 students are :
+[67, 34, 97, 78, 23]
+
+***************MENU*****************
+1. Selection Sort of the percentage
+2. Bubble Sort of the percentage
+3. End the program
+
+
+Enter your choice (from 1,2 or 3) : 1
+
+Marks of students in ascending order by Selection Sort :
+23
+34
+67
+78
+97
+
+The top 5 marks are :
+97
+78
+67
+34
+23
+
+***************MENU*****************
+1. Selection Sort of the percentage
+2. Bubble Sort of the percentage
+3. End the program
+
+
+Enter your choice (from 1,2 or 3) : 2
+
+Marks of student by applying Bubble Sort  :
+23
+34
+67
+78
+97
+
+The top 5 marks are :
+97
+78
+67
+34
+23
+
+***************MENU*****************
+1. Selection Sort of the percentage
+2. Bubble Sort of the percentage
+3. End the program
+
+
+Enter your choice (from 1,2 or 3) : 3
+Ended the program.
