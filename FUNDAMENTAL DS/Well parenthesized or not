@@ -1,0 +1,88 @@
+/*  In any language program mostly syntax error occurs due to unbalancing delimiter such as (),{},[]. Write C++ program using stack to check whether
+given expression is well parenthesized or not.     */
+
+#include <iostream>
+#define size 20
+using namespace std;
+
+class stack{
+    int top;
+    char stk[size];
+    public:
+        stack(){
+            top=-1;
+        }
+        void push(char);
+        char pop();
+        int isempty();
+};
+
+void stack::push(char x){
+    top++;
+    stk[top]=x;
+}
+
+char stack::pop(){
+    char s;
+    s=stk[top];
+    top--;
+    return s;
+}
+
+
+int stack::isempty(){
+    if(top==-1)
+        return 1;
+    else
+        return 0;
+}
+
+int main(){
+    stack s1;
+    char exp[20],ch;
+    int i=0;
+    cout<<"\nEnter the expression to check whether well parenthesised or not (limit 10 parenthesis):  ";
+    cin>>exp;
+
+    if((exp[0]==')')||(exp[0]==']')||(exp[0]=='}')){
+        cout<<"\nInvalid Expression.....\n";
+        return 0;
+    }
+    else{
+        while(exp[i]!='\0')
+        {
+            ch=exp[i];
+            switch(ch)
+            {
+            case '(':s1.push(ch);break;
+            case '[':s1.push(ch);break;
+            case '{':s1.push(ch);break;
+            case ')':s1.pop();break;
+            case ']':s1.pop();break;
+            case '}':s1.pop();break;
+            }
+            i=i+1;
+        }
+    }
+    if(s1.isempty()){
+        cout<<"\nExpression is well parenthesised...\n";
+    }
+    else{
+        cout<<"\nInvalid Expression ( not in well parenthesized )\n";
+    }
+    return 0;
+}
+
+
+
+Output :
+
+(1)
+Enter the expression to check whether well parenthesised or not (limit 10 parenthesis):  {[{}]}(
+
+Invalid Expression ( not in well parenthesized )
+
+(2)
+Enter the expression to check whether well parenthesised or not (limit 10 parenthesis):  {[]}(){}
+
+Expression is well parenthesised...
