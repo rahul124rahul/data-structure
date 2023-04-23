@@ -1,0 +1,28 @@
+
+// Fahrenheit to degree celsius By using the formula of the conversion 
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    float f;
+    cin>>f;
+    float d;
+    d=(f-32)/1.8;
+    cout<<d;
+
+    return 0;
+}
+
+
+Output :
+
+45
+7.22222
+
+23
+-5
+
+123
+50.5556
