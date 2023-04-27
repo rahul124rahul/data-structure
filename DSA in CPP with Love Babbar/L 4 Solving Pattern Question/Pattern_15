@@ -1,0 +1,65 @@
+
+/*
+for n=4
+
+A 
+B C 
+C D E 
+D E F G 
+
+*/
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int i=1;
+    int asc=65;
+
+    while(i<=n){
+        int j=1;
+        while(j<=i){
+            cout<<char(asc+i+j-2)<<" ";
+            j++;
+        }
+        cout<<endl;
+        i++;
+    }
+    
+    return 0;
+}
+
+
+
+Output :
+
+
+
+12
+
+A
+B C
+C D E
+D E F G
+E F G H I
+F G H I J K
+G H I J K L M
+H I J K L M N O
+I J K L M N O P Q
+J K L M N O P Q R S
+K L M N O P Q R S T U 
+L M N O P Q R S T U V W
+
+
+9
+
+A 
+B C 
+C D E 
+D E F G 
+E F G H I 
+F G H I J K 
+G H I J K L M 
+H I J K L M N O
+I J K L M N O P Q
