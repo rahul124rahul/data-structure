@@ -1,0 +1,45 @@
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int i=1;
+    int a=0;
+
+    while(i<=n){
+        int j=1;
+        while(j<=n){
+            cout<<char('A'+a)<<" ";
+            j++;
+            a++;
+        }
+        cout<<endl;
+        i++;
+    }
+    
+    return 0;
+}
+
+
+
+Output :
+
+
+5
+
+A B C D E 
+F G H I J 
+K L M N O 
+P Q R S T 
+U V W X Y 
+
+
+4
+
+A B C D
+E F G H
+I J K L
+M N O P
