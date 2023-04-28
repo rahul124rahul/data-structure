@@ -1,0 +1,77 @@
+
+
+/*
+for n = 4
+
+D 
+C D 
+B C D 
+A B C D 
+
+  */
+
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    int n;
+    cin>>n;
+    int i=1;
+    while(i<=n){
+        int j=1;
+        while(j<=i){
+            cout<<char(64+n-i+j)<<" ";
+            j++;
+        }
+        cout<<endl;
+        i++;
+    }
+
+    
+    return 0;
+}
+
+
+
+Output :
+
+12
+
+L 
+K L 
+J K L 
+I J K L 
+H I J K L 
+G H I J K L 
+F G H I J K L 
+E F G H I J K L
+D E F G H I J K L
+C D E F G H I J K L
+B C D E F G H I J K L
+A B C D E F G H I J K L
+
+
+21
+
+U
+T U
+S T U
+R S T U
+Q R S T U
+P Q R S T U
+O P Q R S T U
+N O P Q R S T U
+M N O P Q R S T U
+L M N O P Q R S T U
+K L M N O P Q R S T U
+J K L M N O P Q R S T U 
+I J K L M N O P Q R S T U
+H I J K L M N O P Q R S T U
+G H I J K L M N O P Q R S T U
+F G H I J K L M N O P Q R S T U
+E F G H I J K L M N O P Q R S T U
+D E F G H I J K L M N O P Q R S T U
+C D E F G H I J K L M N O P Q R S T U
+B C D E F G H I J K L M N O P Q R S T U
+A B C D E F G H I J K L M N O P Q R S T U 
