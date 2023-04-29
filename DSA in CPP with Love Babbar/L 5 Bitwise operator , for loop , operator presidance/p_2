@@ -1,0 +1,43 @@
+
+
+/*
+left shift :
+    left shift in case of smaller nos is multiplied by 2
+ 
+right shift:
+    geneerally right shift divides the no by 2
+
+- In right shift(>>) & left shift(<<) in case of +ve no. padding is done by zeros(0).
+- & In case of -ve no. it is compiler dependent
+
+*/
+
+
+
+#include<iostream>
+using namespace std;
+int main(){
+    // cout<<(17>>1)<<endl;    // 8
+    // cout<<(17>>2)<<endl;    // 4
+    // cout<<(21<<1)<<endl;    // 42
+    // cout<<(21<<2)<<endl;    // 84
+    
+    int p=2;
+    cout<< p++ <<endl;      // 2
+    cout<< ++p <<endl;      // 4
+    cout<< p <<endl;        // 4
+    cout<< --p <<endl;      // 3
+    cout<< p-- <<endl;      // 3
+
+    return 0;
+}
+
+
+
+Output :
+
+2
+4
+4
+3
+3
