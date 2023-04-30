@@ -1,0 +1,27 @@
+// fibonacci series
+// 0 1 1 2 3 5 8 13 21 34 55
+
+#include<iostream>
+using namespace std;
+int main(){
+    int a = 0 , no , b = 1 , c;
+    cout<<"Enter a no of elements required in series : ";
+    cin>>no;
+    for(int i=0 ; i<=no ; i++){
+       cout<<a<<" ";
+       c=a+b;
+       a=b;
+       b=c;
+       
+    }
+
+    return 0;
+}
+
+
+
+Output  :
+
+
+Enter a no of elements required in series : 21
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946 
