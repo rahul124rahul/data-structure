@@ -1,0 +1,79 @@
+
+/* 
+for loop ( initialise ; condition ; increment/decrement ){
+    loop body       }
+
+we can do initialisation increment/decrement outside & also we can write condition outside for
+
+*/
+
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    int i =1 ;
+    for( ; ; ){
+        if(i<=5){
+            cout<<i<<endl;
+            i++;
+        }
+        else{
+            break;
+        }
+    }
+
+    
+    for(int a=3 , b=4 , c=5 ; a>=0 && b>=0 && c>=0 ; a-- , b-- , c-- ){
+        cout<<a<<b<<c<<endl;
+    }
+
+    
+    cout<<"Enter a no.: ";
+    int no , sum = 0 ;
+    cin>>no;
+    for(int i=1 ; i<=no ;i++){
+        sum+=i; }
+    cout<<"The sum of numbers from 1 to "<<no<<" is "<<sum;
+    return 0;
+}
+
+
+
+
+
+Output :
+
+
+
+
+1
+2
+3
+4
+5
+345
+234
+123
+012
+Enter a no.: 23 
+The sum of numbers from 1 to 23 is 276
+
+
+
+
+
+
+1
+2
+3
+4
+5
+345
+234
+123
+012
+Enter a no.: 100
+The sum of numbers from 1 to 100 is 5050
