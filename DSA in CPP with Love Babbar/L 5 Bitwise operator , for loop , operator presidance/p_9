@@ -1,0 +1,49 @@
+/*  */
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int a=4;
+    int b=6;
+
+    cout<<(a&b)<<endl;
+    cout<<(a|b)<<endl;
+    cout<<(~a)<<endl;
+    cout<<(a^b)<<endl;
+
+    cout<<(5<<1)<<endl;
+    cout<<(15<<2)<<endl;
+    cout<<(5>>2)<<endl;
+    cout<<(15>>1)<<endl;
+    
+
+    int r=12;
+
+    cout<<r<<endl;
+    cout<<r++<<endl;
+    cout<<++r<<endl;
+    cout<<--r<<endl;
+    cout<<r--<<endl;
+    cout<<r<<endl;
+    return 0;
+}
+
+
+Output :
+
+
+4
+6
+-5
+2
+10
+60
+1
+7
+12
+12
+14
+13
+13
+12
