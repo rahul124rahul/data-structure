@@ -1,0 +1,47 @@
+/*  
+Program to print the difference between the product of the digits ot the given digit and sum of the digits of the given number
+*/
+
+#include<iostream>
+using namespace std;
+
+class soln{
+    public:
+    int res(int n){
+        int a,b,sum=0 , p=1;
+        while(n>0){
+            a=n%10;
+            n=n/10;
+            sum=sum+a;
+            p=p*a;
+        }
+        cout<<"sum : "<<sum<<endl;
+        cout<<"product : "<<p<<endl;
+        return p-sum;
+    }
+};
+int main(){
+    int n ;
+    cin>>n;
+    soln b;
+    int g = b.res(n);
+
+    cout<<"The diffenrence is "<<g<<endl;
+    
+    return 0;
+}
+
+
+Output :
+
+432
+sum : 9
+product : 24
+The diffenrence is 15
+
+
+7543
+sum : 19
+product : 420
+The diffenrence is 401
+
