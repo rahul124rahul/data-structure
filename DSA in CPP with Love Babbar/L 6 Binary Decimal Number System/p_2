@@ -1,0 +1,40 @@
+/* Decimal to binary conversion
+
+    M1   */
+
+#include<math.h>
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;         // Decimal input is taken
+    //  Now we have to convert it into the binary format 
+    int i=0,revno=0;
+    while(n!=0){
+        int rem=n%2;
+        revno=pow(10,i)*rem+revno;
+        n=n/2;
+        i++;
+    }
+    cout<<revno<<endl;   
+    return 0;
+}
+
+
+
+Output :
+
+10
+1010
+
+11
+1011
+
+
+21
+10099
+
+
+The above one ans of the 21 ia wrong 
+the correct answer in this place is 10101
