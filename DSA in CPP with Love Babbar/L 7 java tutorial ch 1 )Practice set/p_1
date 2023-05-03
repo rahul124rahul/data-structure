@@ -1,0 +1,60 @@
+/*  
+
+123344
+443321
+
+2147483641  
+1463847412
+
+-2147483641 
+-1463847412
+
+*/
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int sign;
+    int n;
+    cin>>n;
+
+    if(n>0){
+        sign=1;
+    }
+    if(n<0){
+        sign=-1;
+        n=-n;
+    }
+    
+    int res=0,i=0;
+
+    while(n!=0){
+        int t=n%10;
+        if(res>INT32_MAX/10){
+            res=0;
+            break;
+        }
+        if(res<INT32_MIN/10){
+            res=0;
+            break;
+        }
+        res=(res*10)+t;
+        n=n/10;
+        
+    }
+    
+    cout<<res*sign<<endl;
+    
+    return 0;
+}
+
+
+
+Output :
+
+123456789
+987654321
+
+4356788
+8876534
