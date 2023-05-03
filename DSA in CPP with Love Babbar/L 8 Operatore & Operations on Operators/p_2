@@ -1,0 +1,57 @@
+
+/* 
+
+Simple calculator by using the switch case
++,-,*,/,%
+
+ */
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int a,b;
+    cout<<"Enter 1st no : ";
+    cout<<"Enter 2nd no : ";
+
+    cin>>a>>b;
+    char c;
+    cout<<"Enter which operation want to perform : ( + , - , * , / , % ) : ";
+    cin>>c;
+    switch(c){
+
+        case '+':cout<<a<<" + "<<b<<" = "<<a+b<<endl;
+        break; 
+        
+        case '-':cout<<a<<" - "<<b<<" = "<<a-b<<endl;
+        break; 
+        
+        case '*':cout<<a<<" * "<<b<<" = "<<a*b<<endl;
+        break; 
+        
+        case '/':cout<<a<<" / "<<b<<" = "<<a/b<<endl;
+        break; 
+        
+        case '%':cout<<a<<" % "<<b<<" = "<<a%b<<endl;
+        break; 
+
+        default : 
+            cout<<"Wrong Operation !!!!!!!!!!!!!!!!!!!";
+    }
+
+    
+    return 0;
+}
+
+
+Output :
+
+Enter 1st no : Enter 2nd no : 12 232
+Enter which operation want to perform : ( + , - , * , / , % ) : +
+12 + 232 = 244
+
+Enter 1st no : Enter 2nd no : 233
+4554
+Enter which operation want to perform : ( + , - , * , / , % ) : -
+233 - 4554 = -4321
+
