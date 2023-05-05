@@ -1,0 +1,44 @@
+
+/* 
+
+To Write a function for Checking the given number is Even or not 
+ */
+
+#include<iostream>
+using namespace std;
+
+
+
+bool eveodd(int p){
+    if(p%2==0){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int main(){
+    int no;
+    cin>>no;
+    
+    if(eveodd(no)){
+        cout<<"Even no. "<<endl;
+    }
+    else{
+        cout<<"Odd no. "<<endl;
+    }
+
+    return 0;
+}
+
+
+Output :
+
+
+2345
+Odd no.
+
+
+654
+Even no.
