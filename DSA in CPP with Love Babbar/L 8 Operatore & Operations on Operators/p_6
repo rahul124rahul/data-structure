@@ -1,0 +1,40 @@
+/* 
+To write  function for the factorial and combination ie nCr */
+
+#include<iostream>
+using namespace std;
+
+int f(int p){
+    int prd=1;
+    for(int i=1 ; i<=p ; i++){
+        prd=prd*i;
+    }
+    return prd;
+
+}
+
+int c(int a, int b){
+    int r;
+    r=f(a)/(f(a-b)*f(b));
+    return r;
+}
+
+int main(){
+    int n,r;
+    cin>>n>>r;
+    cout<<c(n,r)<<endl;
+    return 0;
+}
+
+
+Output :
+
+
+6 4
+15
+
+7 5
+21
+
+23 12
+4
