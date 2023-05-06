@@ -1,0 +1,78 @@
+// Introduction to array in C++
+
+#include<iostream>
+using namespace std;
+
+void print_arr(int arra[],int size){
+    
+    for(int i=0 ; i<size ; i++){
+        cout<<arra[i]<<endl;
+    }
+}
+
+
+int main(){
+
+    int arr[5];
+    // We can declare same arrays of float , double , char , bool etc
+
+    cout<<arr[0]<<endl;     // These all are printing some address
+    cout<<arr[1]<<endl;     //  this is one of the method of printing values from array
+    cout<<arr[2]<<endl;
+    cout<<arr[3]<<endl;
+    cout<<arr[4]<<endl<<endl;
+
+    cout<<arr[567]<<endl<<endl;       // this is printing (something) address not throwing an error
+
+
+
+    int arr2[5]={2,3,4,5,6};
+    print_arr(arr2,5);       // It's short way of printing values from array by using function
+    cout<<"\nThe size of arr2 is : "<<sizeof(arr2)<<" bits ie. there are 5 integer values"<<endl;   cout<<endl;
+
+    // Following will throw an error beccause we are initializing more values to an array than it's size
+    // int arr3[3] = {12,23,34,45,56,67,78,89};    
+    
+
+                // Initialization with '0'
+    int arr4[5]={0};            // this is the special case In which all locations in an array are initialised to '0'.
+    // int arr4[5]={1468};         // Here first location is initialised to given  no & further all are initialised to '0'.
+
+    print_arr(arr4,5);
+    
+
+
+    cout<<"\nEverything is fine here di!!"<<endl<<endl;
+    return 0;
+}
+
+
+
+
+
+
+Output :
+
+6422280
+1992458861
+4201488
+6422356
+4201579
+
+623125796
+
+2
+3
+4
+5
+6
+
+The size of arr2 is : 20 bits ie. there are 5 integer values
+
+0
+0
+0
+0
+0
+
+Everything is fine here di!!
