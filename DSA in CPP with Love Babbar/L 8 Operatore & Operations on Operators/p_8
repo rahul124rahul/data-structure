@@ -1,0 +1,37 @@
+/*
+To Write an Arithmetic progression function 
+A.P. = (3*n)+7   --Given   */
+
+#include<iostream>
+using namespace std;
+
+int ap(int no ){
+    int r;
+    r= (3*no)+7;
+    return r;
+}
+
+int main(){
+    int n;
+    cin>>n;
+
+    int ans;
+    ans = ap(n);
+
+    cout<<"A.P  =  "<<ans<<endl;
+    
+    return 0;
+}
+
+
+
+Output :
+
+32
+A.P  =  103
+
+43
+A.P  =  136
+
+54
+A.P  =  169
