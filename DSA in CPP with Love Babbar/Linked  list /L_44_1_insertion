@@ -1,0 +1,157 @@
+// Creation on the linked list , inserting an element(node) in the linked list , deleting an element(node) from the given linked list
+
+
+#include <iostream>
+using namespace std;
+
+class Node{
+    public:
+      int data;
+      Node* next;
+
+      Node(int d){      // constructor of Node class (parameterised constructor)
+        this->data = d;
+        this->next = NULL;
+      }
+};
+
+
+
+//  Printing the linked list 
+void print_linked_list(Node * head){
+  Node *i = head;
+  while(i != NULL){
+    cout<<i->data<<" ";
+    i = i->next;
+  }
+  cout<<endl;
+}
+
+
+
+
+
+//  Inserting the given element(node) at head in the given linkedlist 
+void insertathead(Node* &head , int data){
+    Node * temp = new Node(data);
+    temp->next = head;
+    head = temp;
+}
+
+
+
+
+
+
+
+// Inserting the element(node) at the end / tail of the linked list
+void insertattail(Node* &tail , int d){
+    Node* temp = new Node(d);
+    tail->next = temp;
+    tail = temp;
+}
+
+
+
+
+
+
+//  Inserting the elemet at the given position 
+  void insertatposition(Node* &head , Node* &tail , int position , int data){
+    Node* temp = head;
+    Node* node_to_insert = new Node(data);
+
+    
+    // Inserting at the 1st (head)position
+    if(position == 1){
+      insertathead(head,  data);
+    }
+
+    
+    int i=2;    // inserting position is starting from position 2
+    while(i<position){
+      temp=temp->next;
+      i++;
+    }
+
+    // Following condition for inserting the node(element) at the last of the present linked list
+    if(temp->next == NULL){
+      insertattail(tail,data);
+      return;
+    }
+    
+    
+    // Inserting from position 2  to 2nd last element 
+    node_to_insert->next = temp->next;
+    temp->next = node_to_insert;
+  }
+
+
+
+
+
+int main() {
+
+  // creation of the linked list and adding 1st element(node) in the linked list and printing the data of the node and the next node
+  
+  Node* node = new Node(10);
+  cout<<node->data<<endl;
+  cout<<node->next<<endl<<endl;
+
+
+
+
+  
+  // Insertion of the node in the linked list 
+    Node * head = NULL;
+    Node * tail = NULL;
+    Node * llist = new Node(11);
+    head = llist;
+    tail = llist;
+    print_linked_list(head);
+  
+  
+
+  // Inserting at Head
+    insertathead(head,22);
+  print_linked_list(head);
+    insertathead(head, 33);
+  print_linked_list(head);
+
+    cout<<"Head = " << head->data << "  " << "Tail = " << tail->data <<endl;
+    cout<<endl;
+  
+
+
+  // Insert at Tail
+    insertattail(tail , 12);
+  print_linked_list(head);
+    insertattail(tail, 13);
+  print_linked_list(head);
+    insertattail(tail, 14);
+  print_linked_list(head);
+  
+    cout<<"Head = " << head->data << "  " << "Tail = " << tail->data <<endl;
+    cout<<endl;
+
+
+
+
+  //  Insert at the given position 
+    insertatposition(head , tail , 4 , 90);
+  print_linked_list(head);
+    insertatposition(head,tail,1,111);  
+  print_linked_list(head);
+    insertatposition(head,tail,10,99);  
+  print_linked_list(head);
+    insertatposition(head,tail,11,999);  
+  print_linked_list(head);
+
+
+
+  
+    cout<<"Head = " << head->data << "  " << "Tail = " << tail->data <<endl;
+    cout<<endl;
+
+    return 0;
+}
