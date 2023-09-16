@@ -1,0 +1,266 @@
+// Doubly linked list 
+// previous <= data => next
+
+#include <iostream>
+using namespace std;
+
+
+// Node class defination 
+
+class Node {
+  public:
+    int data;
+    Node * next;
+    Node * prev;
+
+    Node(int d){
+      this->data = d;
+      this->next=NULL;
+      this->prev=NULL;
+    }
+};
+
+
+
+// Printing Linked list
+
+void printlinkedlist(Node * & head){
+  cout<<endl;
+  Node* temp = head;
+  while(temp!=NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+  }
+  cout<<endl;
+}
+
+//  Printing the number of elements(Nodes) in the linked list
+void no(Node* head){
+  int n=1;
+    while(head->next!=NULL){
+      n++;
+      head = head->next;
+    }
+  cout<<"Number of nodes present in the linked list are : "<<n<<endl;
+}
+
+// Inserting the element(node) in doubly linked list
+
+// Insertion At Head
+void insertathead(Node* &head ,Node* &tail, int data){
+    if(head == NULL ){
+      Node* temp = new Node(data);
+      head = temp;
+      
+    }
+    else{
+      Node* temp = new Node(data);
+      temp->next = head;
+      head->prev = temp;
+      head = temp;  
+    }
+    
+}
+
+// Inserrtion At End(tail)
+void insertatend(Node* & head , Node* &tail, int data){
+  if(tail==NULL){
+    Node* temp = new Node(data);
+    head = temp;
+    tail = temp;
+  }
+  else{
+      Node* temp = head;
+    while(temp->next != NULL){
+      temp=temp->next;
+    }
+    Node* nodetoinsert  = new Node(data);
+    temp->next = nodetoinsert;
+    nodetoinsert->prev = temp;
+    tail=nodetoinsert;  
+  }
+  
+  
+}
+
+
+// Insert at position 
+void insertatposition(Node* &head , Node* & tail , int position , int data ){
+    if(position==1){        // Inserting Node at head / Position==0
+      insertathead(head , tail , data);
+      return;
+    }
+
+    Node* temp = head;
+    int n=2;
+    while(n < position){
+      temp=temp->next;
+      n++;
+    }
+  
+    if(temp->next == NULL){      // Inserting the node at the tail(end)
+      insertatend(head, tail, data);
+      return;
+    }
+   
+  
+    Node* nodetoinsert = new Node(data);
+    nodetoinsert->next = temp->next;
+    temp->next->prev = nodetoinsert;
+    temp->next = nodetoinsert;
+    nodetoinsert->prev = temp;
+  
+} 
+
+
+
+
+
+int main() {
+  Node* head = NULL;
+  Node* tail = NULL;
+  Node* node4 = new Node(12);
+  head = node4;
+  tail = node4;
+
+    cout<<"insertion at head in the doubly linked list \n";
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+    insertathead(head , tail , 21);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+    insertathead(head , tail , 43);
+    printlinkedlist(head);
+    no(head);  
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+    insertathead(head , tail , 54);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+    insertathead(head , tail , 65);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+
+
+
+  
+  cout<<"\n\nInertion at the  end of the linked list\n";
+    insertatend(head,tail,90);
+  printlinkedlist(head);
+  no(head);
+  cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+    
+    insertatend(head,tail,923);
+  printlinkedlist(head);
+  no(head);
+  cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+    
+    insertatend(head,tail,323230);
+  printlinkedlist(head);
+  no(head);
+  cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+
+
+
+
+  cout<<"\n\nInserting the node at the given position ---------------------------------------------------\n";
+    insertatposition(head,tail,1,111);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+    
+  
+    insertatposition(head,tail,10,9990);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+  
+    insertatposition(head,tail,2,2);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+  
+  
+    insertatposition(head,tail,5,5);
+    printlinkedlist(head);
+    no(head);
+    cout<<"Head => "<<head->data<<"    Tail => "<<tail->data<<endl;
+
+  
+  
+  
+  
+  return 0;
+}
+
+
+
+
+Output ::
+
+
+
+insertion at head in the doubly linked list 
+
+12 
+Number of nodes present in the linked list are : 1
+Head => 12    Tail => 12
+
+21 12 
+Number of nodes present in the linked list are : 2
+Head => 21    Tail => 12
+
+43 21 12 
+Number of nodes present in the linked list are : 3
+Head => 43    Tail => 12
+
+54 43 21 12 
+Number of nodes present in the linked list are : 4
+Head => 54    Tail => 12
+
+65 54 43 21 12 
+Number of nodes present in the linked list are : 5
+Head => 65    Tail => 12
+
+
+Inertion at the  end of the linked list
+
+65 54 43 21 12 90 
+Number of nodes present in the linked list are : 6
+Head => 65    Tail => 90
+
+65 54 43 21 12 90 923 
+Number of nodes present in the linked list are : 7
+Head => 65    Tail => 923
+
+65 54 43 21 12 90 923 323230 
+Number of nodes present in the linked list are : 8
+Head => 65    Tail => 323230
+
+
+Inserting the node at the given position ---------------------------------------------------
+
+111 65 54 43 21 12 90 923 323230 
+Number of nodes present in the linked list are : 9
+Head => 111    Tail => 323230
+
+111 65 54 43 21 12 90 923 323230 9990 
+Number of nodes present in the linked list are : 10
+Head => 111    Tail => 9990
+
+111 2 65 54 43 21 12 90 923 323230 9990 
+Number of nodes present in the linked list are : 11
+Head => 111    Tail => 9990
+
+111 2 65 54 5 43 21 12 90 923 323230 9990 
+Number of nodes present in the linked list are : 12
+Head => 111    Tail => 9990
