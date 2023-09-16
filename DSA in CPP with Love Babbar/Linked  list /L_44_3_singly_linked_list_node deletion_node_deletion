@@ -1,0 +1,158 @@
+// singly linked list node deletion by value
+
+// Creation on the linked list , inserting an element(node) in the linked list ,
+// deleting an element(node) from the given linked list
+
+// Deleting the node by the position given
+
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+  int data;
+  Node *next;
+
+  Node(int d) { // constructor of Node class (parameterised constructor)
+    this->data = d;
+    this->next = NULL;
+  }
+
+  ~Node() {
+    int del_val = this->data;
+    // Memory Free
+    if (this->next != NULL) {
+      this->next = NULL;
+      delete next;
+    }
+    cout << "Memory is free for the node with data => " << del_val << endl;
+  }
+};
+
+//  Printing the linked list
+void print_linked_list(Node *&head) {
+  Node *i = head;
+  while (i != NULL) {
+    cout << i->data << " ";
+    i = i->next;
+  }
+  cout << endl;
+}
+
+// Inserting the element(node) at the end / tail of the linked list
+void insertattail(Node *&tail, int d) {
+  Node *temp = new Node(d);
+  tail->next = temp;
+  tail = temp;
+}
+
+void deletebyvalue(Node *&head, Node *&tail, int value) {
+  Node *previous = NULL;
+  Node *current = head;
+
+  if (current->data == value) {
+    head = head->next;
+    current->next = NULL;
+    delete current;
+    return;
+  }
+
+  while (current->data != value) {
+    previous = current;
+    current = current->next;
+  }
+
+  if (current->next == NULL) {
+    tail = previous;
+  }
+  previous->next = current->next;
+  current->next = NULL;
+  delete current;
+}
+
+int main() {
+
+  // Insertion of the node in the linked list
+  Node *head = NULL;
+  Node *tail = NULL;
+  Node *llist = new Node(11);
+  head = tail = llist;
+  print_linked_list(head);
+
+  // Insert at Tail
+  insertattail(tail, 12);
+  print_linked_list(head);
+  insertattail(tail, 13);
+  print_linked_list(head);
+  insertattail(tail, 14);
+  print_linked_list(head);
+  insertattail(tail, 15);
+  print_linked_list(head);
+  insertattail(tail, 16);
+  print_linked_list(head);
+  insertattail(tail, 21);
+  print_linked_list(head);
+  insertattail(tail, 22);
+  print_linked_list(head);
+  insertattail(tail, 23);
+  print_linked_list(head);
+  insertattail(tail, 24);
+  print_linked_list(head);
+
+  cout << "Head = " << head->data << "  "
+       << "Tail = " << tail->data << endl;
+  cout << endl;
+
+  deletebyvalue(head, tail, 14);
+  print_linked_list(head);
+  cout << "Head = " << head->data << "  "
+       << "Tail = " << tail->data << endl;
+  cout << endl;
+
+  deletebyvalue(head, tail, 11);
+  print_linked_list(head);
+  cout << "Head = " << head->data << "  "
+       << "Tail = " << tail->data << endl;
+  cout << endl;
+
+  deletebyvalue(head, tail, 24);
+  print_linked_list(head);
+  cout << "Head = " << head->data << "  "
+       << "Tail = " << tail->data << endl;
+  cout << endl;
+
+  return 0;
+}
+
+
+
+
+
+
+Output:: 
+
+
+
+11 
+11 12 
+11 12 13 
+11 12 13 14 
+11 12 13 14 15 
+11 12 13 14 15 16 
+11 12 13 14 15 16 21 
+11 12 13 14 15 16 21 22 
+11 12 13 14 15 16 21 22 23 
+11 12 13 14 15 16 21 22 23 24 
+Head = 11  Tail = 24
+
+Memory is free for the node with data => 14
+11 12 13 15 16 21 22 23 24 
+Head = 11  Tail = 24
+
+Memory is free for the node with data => 11
+12 13 15 16 21 22 23 24 
+Head = 12  Tail = 24
+
+Memory is free for the node with data => 24
+12 13 15 16 21 22 23 
+Head = 12  Tail = 23
