@@ -1,0 +1,176 @@
+// Deletion of doubly linked list by value(node value)
+
+
+#include <iostream>
+using namespace std;
+
+class Node{
+  public:
+    int data;
+    Node* next;
+    Node* prev;
+
+    Node(int d){
+      this->data = d;
+      this->next = NULL;
+      this->prev = NULL;
+    }
+
+    ~Node(){
+      int val = this->data;
+      if(this->next !=NULL || this->prev != NULL){
+        this->next = NULL;
+        this->prev = NULL;
+        delete next;
+        delete prev;
+      }
+      cout<<"The value deleted from Doubly linked list : "<<val<<endl;
+    }
+};
+
+
+
+
+// Inserting the node at the head of the linked list
+void insert(Node* &head ,Node* &tail, int data){
+    if(head==NULL){
+      Node* temp = new Node(data);
+      head = temp;
+      tail = temp;
+      return;
+    }
+    Node* temp = new Node(data);
+    temp->next = head;
+    head->prev = temp;
+    head = temp;
+}
+
+
+// Traversing in the Doubly Linked List
+void print(Node* head){
+  while(head != NULL){
+    cout<<head->data<<" ";
+    head = head->next;
+  }
+  cout<<endl;
+}
+
+
+
+
+// deletion function for Doubly linked list by Value
+void deleteByValue(Node* &head ,Node* &tail , int value ){
+  if(head == NULL){
+    cout<<"\nThe doubly linked list is empty\n\n";
+    return;
+  }
+  
+  Node* temp = head;
+  if(temp->data == value){
+    head=temp->next;
+    head->prev = NULL;
+    delete temp;
+    return;
+  }
+  
+  while(temp->next != NULL){
+    if(temp->data == value){
+      break;
+    }
+    temp=temp->next;
+  }
+  if(temp->next==NULL){
+    tail=tail->prev;
+    tail->next=NULL;
+    temp->prev = NULL;
+    delete temp;
+    return;
+  }
+  
+  
+  temp->next->prev = temp->prev;
+  temp->prev->next = temp->next;
+  delete temp;
+}
+
+
+
+
+int main() {
+  Node* head = NULL;
+  Node* tail = NULL;
+
+  deleteByValue(head, tail, 32);
+
+  insert(head , tail , 10);
+  print(head);
+  insert(head , tail , 12);
+  insert(head , tail , 21);
+  insert(head , tail , 32);
+  insert(head , tail , 222);
+  insert(head , tail , 33);
+  insert(head , tail , 64);
+  insert(head , tail , 367);
+  
+  print(head);
+  cout<<"\nHead => "<<head->data << "    Tail => "<<tail->data<<endl;
+
+  
+  deleteByValue(head,tail, 367);
+  print(head);
+  cout<<"Head => "<<head->data << "    Tail => "<<tail->data<<endl<<endl;
+
+  
+  deleteByValue(head,tail, 64);
+  print(head);
+  cout<<"Head => "<<head->data << "    Tail => "<<tail->data<<endl<<endl;
+
+  
+  deleteByValue(head,tail, 10);
+  print(head);
+  cout<<"Head => "<<head->data << "    Tail => "<<tail->data<<endl<<endl;
+
+  deleteByValue(head,tail, 12);
+  print(head);
+  cout<<"Head => "<<head->data << "    Tail => "<<tail->data<<endl<<endl;
+
+  deleteByValue(head,tail, 32);
+  print(head);
+  cout<<"Head => "<<head->data << "    Tail => "<<tail->data<<endl<<endl;
+
+
+  
+  
+  return 0;
+}
+
+
+
+
+Output :::
+
+The doubly linked list is empty
+
+10 
+367 64 33 222 32 21 12 10 
+
+Head => 367    Tail => 10
+The value deleted from Doubly linked list : 367
+64 33 222 32 21 12 10 
+Head => 64    Tail => 10
+
+The value deleted from Doubly linked list : 64
+33 222 32 21 12 10 
+Head => 33    Tail => 10
+
+The value deleted from Doubly linked list : 10
+33 222 32 21 12 
+Head => 33    Tail => 12
+
+The value deleted from Doubly linked list : 12
+33 222 32 21 
+Head => 33    Tail => 21
+
+The value deleted from Doubly linked list : 32
+33 222 21 
+Head => 33    Tail => 21
