@@ -1,0 +1,113 @@
+// Singly Circular linked list
+// Insertion And Traversing
+
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+  int data;
+  Node *next;
+
+  Node(int d) {
+    this->data = d;
+    this->next = this;
+  }
+};
+
+// Function for traversing in the singly linked list
+void print(Node *&tail) {
+  if (tail == NULL) {
+    cout << "The singly linked list is empty\n";
+    return;
+  }
+  Node *temp = tail;
+  do {
+    cout << temp->data << " ";
+    temp = temp->next;
+  } while (temp != tail);
+  cout << endl;
+}
+
+// Function for inserting the element after the tail node only
+void insertAfterTail(Node *&tail, int data) {
+  Node *temp = new Node(data);
+
+  if (tail == NULL) {
+    tail = temp;
+    tail->next = tail;
+    return;
+  }
+
+  temp->next = tail->next;
+  tail->next = temp;
+}
+
+// Function for aadding node after specific valued node
+void insertAfterElement(Node *&tail, int ele, int data) {
+  Node *NodeTOInsert = new Node(data);
+  if (tail == NULL) {
+    insertAfterTail(tail, data);
+  }
+  Node *check = tail;
+  while (check->data != ele && check->next != tail) {
+    check = check->next;
+  }
+  if (check->data != ele) {
+    cout << "Unable to insert because " << ele << " not found\n";
+    return;
+  }
+  NodeTOInsert->next = check->next;
+  check->next = NodeTOInsert;
+}
+
+int main() {
+  Node *tail = NULL;
+  print(tail);
+
+  cout << endl;
+  insertAfterTail(tail, 10);
+  print(tail);
+  insertAfterTail(tail, 11);
+  print(tail);
+  insertAfterTail(tail, 13);
+  print(tail);
+  insertAfterTail(tail, 16);
+  print(tail);
+  insertAfterTail(tail, 112);
+  print(tail);
+  insertAfterTail(tail, 123);
+  print(tail);
+
+  cout << endl << "Inserting after an specific entry : \n";
+  insertAfterElement(tail, 10, 43);
+  print(tail);
+  insertAfterElement(tail, 11, 55);
+  print(tail);
+  insertAfterElement(tail, 1523, 99);
+  print(tail);
+  insertAfterElement(tail, 13, 17);
+  print(tail);
+
+  return 0;
+}
+
+
+
+Output :::
+
+The singly linked list is empty
+
+10 
+10 11 
+10 13 11 
+10 16 13 11 
+10 112 16 13 11 
+10 123 112 16 13 11 
+
+Inserting after an specific entry : 
+10 43 123 112 16 13 11 
+10 43 123 112 16 13 11 55 
+Unable to insert because 1523 not found
+10 43 123 112 16 13 11 55 
+10 43 123 112 16 13 17 11 55 
