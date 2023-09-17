@@ -1,0 +1,184 @@
+// Deletion of the node by it's position from the doubly linked list
+
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+  int data;
+  Node *next;
+  Node *prev;
+
+  Node(int d) {
+    this->data = d;
+    this->prev = NULL;
+    this->next = NULL;
+  }
+
+  ~Node() { // Destructor
+    int val = this->data;
+    if (this->next != NULL || this->prev != NULL) {
+      this->prev = NULL;
+      this->next = NULL;
+      delete next;
+    }
+    cout << "The element deleted from the Doubly linked list : " << val << endl;
+  }
+};
+
+// Function for traversing in the doubly linked list
+void printlist(Node *head) {
+  if (head == NULL) {
+    cout << "The Doubly linked list is empty \n";
+    return;
+  }
+  while (head != NULL) {
+    cout << head->data << " ";
+    head = head->next;
+  }
+  cout << endl;
+}
+
+// Function for inserting the element in the doubly linked list at it's tail
+void insertdata(Node *&head, Node *&tail, int data) {
+  if (tail == NULL) {
+    Node *temp = new Node(data);
+    head = temp;
+    tail = temp;
+    return;
+  }
+  Node *temp = new Node(data);
+  tail->next = temp;
+  temp->prev = tail;
+  tail = temp;
+}
+
+// Function for datating the head of the doubly linked list
+void deletehead(Node *&head) {
+  Node *temp = head;
+  head = head->next;
+  head->prev = NULL;
+  temp->next = NULL;
+  delete temp;
+}
+
+// Function for deleting the tail of the doubly linked list
+void deletetail(Node *&tail) {
+  Node *temp = tail;
+  tail = tail->prev;
+  tail->next = NULL;
+  temp->prev = NULL;
+  delete temp;
+}
+
+// Function for deleting the the position node
+void deletePositionNode(Node *&head, Node *&tail, int position) {
+  if (position == 1) {
+    deletehead(head);
+    return;
+  }
+
+  Node *temp = head;
+  int i = 2;
+  while (i <= position) {
+    temp = temp->next;
+    i++;
+  }
+  if (temp == tail) {
+    deletetail(tail);
+    return;
+  }
+  temp->prev->next = temp->next;
+  temp->next->prev = temp->prev;
+  delete temp;
+}
+
+int main() {
+  Node *head = NULL;
+  Node *tail = NULL;
+
+  printlist(head);
+  insertdata(head, tail, 12);
+  printlist(head);
+
+  insertdata(head, tail, 21);
+  printlist(head);
+
+  insertdata(head, tail, 33);
+  printlist(head);
+
+  insertdata(head, tail, 41);
+  printlist(head);
+
+  insertdata(head, tail, 433);
+  insertdata(head, tail, 111);
+  insertdata(head, tail, 333);
+  insertdata(head, tail, 454);
+  insertdata(head, tail, 909);
+  printlist(head);
+  cout << "Head = > " << head->data << "     Tail = > " << tail->data << endl
+       << endl;
+
+  // Deleteing the head of the linked list
+
+  deletehead(head); // Deleting the head node
+  printlist(head);
+  cout << "Head = > " << head->data << "     Tail = > " << tail->data << endl
+       << endl;
+
+  deletetail(tail); // Deleting the tail node
+  printlist(head);
+  cout << "Head = > " << head->data << "     Tail = > " << tail->data << endl
+       << endl;
+
+  deletePositionNode(head, tail, 1);
+  printlist(head);
+  cout << "Head = > " << head->data << "     Tail = > " << tail->data << endl
+       << endl;
+
+  deletePositionNode(head, tail, 6);
+  printlist(head);
+  cout << "Head = > " << head->data << "     Tail = > " << tail->data << endl
+       << endl;
+
+  deletePositionNode(head, tail, 3);
+  printlist(head);
+  cout << "Head = > " << head->data << "     Tail = > " << tail->data << endl
+       << endl;
+
+  return 0;
+}
+
+
+
+
+Output :::
+
+
+The Doubly linked list is empty 
+12 
+12 21 
+12 21 33 
+12 21 33 41 
+12 21 33 41 433 111 333 454 909 
+Head = > 12     Tail = > 909
+
+The element deleted from the Doubly linked list : 12
+21 33 41 433 111 333 454 909 
+Head = > 21     Tail = > 909
+
+The element deleted from the Doubly linked list : 909
+21 33 41 433 111 333 454 
+Head = > 21     Tail = > 454
+
+The element deleted from the Doubly linked list : 21
+33 41 433 111 333 454 
+Head = > 33     Tail = > 454
+
+The element deleted from the Doubly linked list : 454
+33 41 433 111 333 
+Head = > 33     Tail = > 333
+
+The element deleted from the Doubly linked list : 433
+33 41 111 333 
+Head = > 33     Tail = > 333
