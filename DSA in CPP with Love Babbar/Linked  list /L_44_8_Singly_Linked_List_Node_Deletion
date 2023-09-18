@@ -1,0 +1,195 @@
+// Singly Linked list Node deletion
+// Insertion , deletion And traversing
+
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+  int data;
+  Node *next;
+
+  Node(int d) {
+    this->data = d;
+    this->next = this;
+  }
+
+  ~Node() {
+    int val = this->data;
+    if (this->next != NULL) {
+      this->next = NULL;
+      delete next;
+    }
+    cout << "The deleted element from the singly circuler list : " << val
+         << endl;
+  }
+};
+
+// Traversing in the Singly Circular Linked list
+void print(Node *&tail) {
+  Node *temp = tail;
+  if (tail == NULL) {
+    cout << "The singly circular linked list is empty\n";
+    return;
+  }
+  do {
+    cout << temp->data << " ";
+    temp = temp->next;
+  } while (temp != tail);
+  cout << endl;
+}
+
+// Function for inserting the element after the tail node only
+void insertAfterTail(Node *&tail, int data) {
+  Node *temp = new Node(data);
+
+  if (tail == NULL) {
+    tail = temp;
+    tail->next = tail;
+    return;
+  }
+
+  temp->next = tail->next;
+  tail->next = temp;
+}
+
+// Deletion of the node by the given node value
+
+void deleteNode(Node *&tail, int value) {
+  if (tail == NULL) {
+    cout << "ERROR IN DELETION, List is empty \n";
+    return;
+  }
+
+  Node *previous = tail;
+  Node *current = tail->next;
+
+  if (tail->data == value && tail->next == tail) {
+    Node *temp = tail;
+    tail = NULL;
+    delete temp;
+    cout << "Last Node is deleted!!!!!!!\n";
+    return;
+  }
+
+  while (current->data != value && current != tail) {
+    previous = current;
+    current = current->next;
+  }
+
+  if (current->data == value) {
+    if (current->data == tail->data) {
+      tail = previous;
+    }
+    previous->next = current->next;
+    current->next = NULL;
+    delete current;
+  } else {
+    cout << "Element (Node) not present in the list\n";
+    return;
+  }
+}
+
+int main() {
+  Node *tail = NULL;
+  print(tail);
+  deleteNode(tail, 21);
+  cout << endl;
+
+  insertAfterTail(tail, 23);
+  print(tail);
+  insertAfterTail(tail, 12);
+  print(tail);
+  insertAfterTail(tail, 32);
+  print(tail);
+  insertAfterTail(tail, 43);
+  print(tail);
+  insertAfterTail(tail, 45);
+  print(tail);
+  insertAfterTail(tail, 55);
+  print(tail);
+  insertAfterTail(tail, 63);
+  print(tail);
+  cout << endl;
+
+  deleteNode(tail, 3);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 23);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 32);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 63);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 12);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 43);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 55);
+  print(tail);
+  cout << "tail = > " << tail->data << endl << endl;
+
+  deleteNode(tail, 3);
+  print(tail);
+  // cout << "tail = > " << tail->data << endl<<endl;
+
+  return 0;
+}
+
+
+
+Output :::
+
+
+The singly circular linked list is empty
+ERROR IN DELETION, List is empty 
+
+23 
+23 12 
+23 32 12 
+23 43 32 12 
+23 45 43 32 12 
+23 55 45 43 32 12 
+23 63 55 45 43 32 12 
+
+Element (Node) not present in the list
+23 63 55 45 43 32 12 
+tail = > 23
+
+The deleted element from the singly circuler list : 23
+12 63 55 45 43 32 
+tail = > 12
+
+The deleted element from the singly circuler list : 32
+12 63 55 45 43 
+tail = > 12
+
+The deleted element from the singly circuler list : 63
+12 55 45 43 
+tail = > 12
+
+The deleted element from the singly circuler list : 12
+43 55 45 
+tail = > 43
+
+The deleted element from the singly circuler list : 43
+45 55 
+tail = > 45
+
+The deleted element from the singly circuler list : 55
+45 
+tail = > 45
+
+Element (Node) not present in the list
+45 
