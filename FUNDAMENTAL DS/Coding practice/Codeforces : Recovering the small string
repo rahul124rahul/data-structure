@@ -1,0 +1,74 @@
+// Comment Here
+// Codeforces : Recovering the small string
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    vector<int>arr(n,0);
+    for(int i=0;i<n;i++){
+        int p;cin>>p;
+        arr[i]=p;
+    }    
+
+    for(int i=0;i<n;i++){
+        int p=arr[i];
+
+        string ans="";
+        while(p!=0){
+            if(p-52>0){
+                ans=ans+'z';
+                ans=ans+'z';
+                p-=52;
+            }
+            else if(p-26>0){
+                ans = 'z'+ans;
+                p-=26;
+            }
+            else{
+                if(ans.length()==2){
+                    char c = ('a'+p-1);
+                    ans = c + ans;
+                }
+                else if(ans.length()==1){
+                    p--;
+                    char c = ('a'+p-1);
+                    ans = c+ans;
+                    ans='a'+ans;
+                }
+                else{
+                    ans+='a';
+                    ans+='a';
+                    p=p-2;
+                    char c = ('a'+p-1);
+                    ans = ans+c;
+                }
+                p=0;
+            }
+        }
+        cout<<ans<<endl;
+    }
+    
+    return 0;
+}
+
+
+
+
+// sample input
+
+// 5
+// 24
+// 70
+// 3
+// 55
+// 48
+
+// aav
+// rzz
+// aaa
+// czz
+// auz
