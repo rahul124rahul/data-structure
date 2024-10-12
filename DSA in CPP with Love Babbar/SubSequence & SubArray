@@ -1,0 +1,38 @@
+// Maximum sum of the fixed size window
+
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+    int n ,w;
+    cout<<"Enter Size of the array/vector : ";
+    cin>>n;
+    vector<int>arr;
+
+    cout<<"Enter all "<<n<<" elements : ";
+
+    for(int i=0;i<n;i++){
+        int p;
+        cin>>p;
+        arr.push_back(p);
+    }
+    cout<<"Enter Size of the Window : ";
+    cin>>w;
+
+    int s = 0;
+    for(int i=0;i<w;i++){
+        s+=arr[i];
+    }
+    int m = s;
+
+    for(int i=w ; i<n;i++){
+        s-=arr[i-w];
+        s+=arr[i];
+        m=max(m,s);
+    }
+
+    cout<<"\nThe Maximam sum of "<<w <<" sized array : "<<m<<endl;
+
+    return 0;
+}
